@@ -1,0 +1,11 @@
+{
+    "manifest_version": 2,
+    "name": "kyriakos run",
+    "description": "Help Kyriakos Grizzly get a cardio workout! v0.4: obstacles work, auto restart game",
+    "version": "0.4.0",
+
+    "browser_action": {
+        "default_icon": "bean_icon.png",
+        "default_popup": "popup.html"
+    }
+}
