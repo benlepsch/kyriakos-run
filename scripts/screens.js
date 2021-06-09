@@ -28,15 +28,27 @@ class Menu {
 // draw background, move clouds, spawn obstacles, what have you
 class Game {
     constructor() {
+        // backgruond
         this.ground_level = c.ground_level;
         this.ground_color = c.ground_color;
         this.sky_color = c.sky_color;
+
+        // clouds
+        this.clouds = [];
+        this.lastCloud = 0;
+        this.cloudTimer = 0;
+        this.cloudUpperTick = c.cloud_rate[1];
+        this.cloudLowerTick = c.cloud_rate[0];
+
+        // obstacles
         this.obstaclesEnabled = c.obstaclesEnabled;
         this.obstacles = [];
         this.lastObstacle = 0;
         this.obstacleTimer = 0;
         this.obstacleUpperTick = c.obstacleRate[1];
         this.obstacleLowerTick = c.obstacleRate[0];
+
+        // main loop/player
         this.running = false;
         this.player = null;
         this.jump_while_died = false;
@@ -53,6 +65,7 @@ class Game {
         this.obstacleTimer = 0;
         this.lastObstacle = 0;
         this.obstacles = [];
+        this.clouds = [];
         if (keys[c.key_jump]) {
             this.jump_while_died = true;
         }
@@ -61,9 +74,11 @@ class Game {
     // generate/move obstackles/clouds
     update() {
         let current = new Date().getTime();
-        let dt = Math.round((current - this.lastObstacle)/1000);
-
-        if (dt >= this.obstacleTimer && this.obstaclesEnabled) {
+        let obstacles_dt = Math.round((current - this.lastObstacle)/1000);
+        let clouds_dt = Math.round((current - this.lastCloud)/1000);
+        
+        // obstacles
+        if (obstacles_dt >= this.obstacleTimer && this.obstaclesEnabled) {
             this.lastObstacle = current;
             this.obstacles.push(new Obstacle());
             this.obstacleTimer = Math.round(Math.random() * this.obstacleUpperTick) + this.obstacleLowerTick;
@@ -73,6 +88,21 @@ class Game {
             this.obstacles[i].update();
             if (this.obstacles[i].remove) {
                 this.obstacles.splice(i, 1);
+                i --;
+            }
+        }
+
+        // clouds
+        if (clouds_dt >= this.cloudTimer) {
+            this.lastCloud = current;
+            this.clouds.push(new Cloud());
+            this.cloudTimer = Math.round(Math.random()* this.cloudUpperTick) + this.cloudLowerTick;
+        }
+
+        for (let i = 0; i < this.clouds.length; i++) {
+            this.clouds[i].update();
+            if (this.clouds[i].remove) {
+                this.clouds.splice(i, 1);
                 i --;
             }
         }
@@ -112,10 +142,42 @@ class Game {
 
         ctx.fillStyle = this.ground_color;
         ctx.fillRect(0, this.ground_level, canvas.width, canvas.height);
+        
+        for (let i = 0; i < this.clouds.length; i++) {
+            this.clouds[i].draw();
+        }
 
         for (let i = 0; i < this.obstacles.length; i++) {
             this.obstacles[i].draw();
         }
+    }
+}
+
+class Cloud {
+    constructor() {
+        this.color = c.cloud_color;
+        this.height = Math.random() * (c.cloud_height[1] - c.cloud_height[0]) + c.cloud_height[0];
+        this.width = Math.random() * (c.cloud_width[1] - c.cloud_width[0]) + c.cloud_width[0];
+        this.top = Math.random() * (c.cloud_top[1] - c.cloud_top[0]) + c.cloud_top[0];
+        this.speed = Math.random() * (c.cloud_speed[1] - c.cloud_speed[0]) + c.cloud_speed[0];
+        this.left = canvas.width;
+        this.remove = false;
+    }
+
+    update() {
+        this.left -= this.speed;
+        if (this.left + this.width <= 0) {
+            this.remove = true;
+        }
+    }
+
+    draw() {
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.left, this.top, this.width, this.height);
+        ctx.strokeStyle = 'black';
+        ctx.beginPath();
+        ctx.rect(this.left, this.top, this.width, this.height);
+        ctx.stroke();
     }
 }
 
@@ -141,7 +203,7 @@ class Obstacle {
 
     // move position
     update() {
-        console.log('left: ' + this.left);
+        //console.log('left: ' + this.left);
         this.left -= this.speed;
         if (this.left + this.width <= 0) {
             this.remove = true;

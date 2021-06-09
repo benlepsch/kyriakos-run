@@ -13,6 +13,9 @@ class Constants {
         // fps
         this.game_fps = 60;
 
+        // menu screen
+        this.menu_color = 'rgb(148, 90, 53)';
+        
         // background map
         this.canvas_width = 500;
         this.canvas_height = 250;
@@ -20,8 +23,13 @@ class Constants {
         this.ground_color = '#19e03a';
         this.sky_color = '#19869c';
 
-        // menu screen
-        this.menu_color = 'rgb(148, 90, 53)';
+        // clouds
+        this.cloud_color = '#ffffff';
+        this.cloud_height = [40, 80]; // [min, max] height
+        this.cloud_width = [50, 100]; // [min, max] width
+        this.cloud_top = [0, 40]; // [min, max] y pos
+        this.cloud_speed = [2, 6]; // [min, max] speed
+        this.cloud_rate = [1, 2];
 
         // obstacles
         this.obstaclesEnabled = true;
