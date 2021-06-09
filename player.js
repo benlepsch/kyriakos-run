@@ -18,7 +18,7 @@ class Player {
     constructor(src_running='player_sprite', src_jumping='player_jumping', height=53, width=40) {
         this.rep = new ImageSrcHolder();
         this.rep.default = document.getElementById(src_running);
-        this.rep.jumping = document.getElementById(src_running);
+        this.rep.jumping = document.getElementById(src_jumping);
         this.left = 0;
         this.top = 0;
         this.height = height;
