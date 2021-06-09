@@ -14,9 +14,9 @@ class Constants {
         this.game_fps = 60;
 
         // background map
-        this.canvas_width = 300;
-        this.canvas_height = 200;
-        this.ground_level = 150;
+        this.canvas_width = 500;
+        this.canvas_height = 250;
+        this.ground_level = 190;
         this.ground_color = '#19e03a';
         this.sky_color = '#19869c';
 
@@ -34,8 +34,8 @@ class Constants {
         // player movement
         this.player_gravity = 1;
         this.player_maxVelX = 15;
-        this.player_maxVelY = 8;
-        this.player_jumpAccel = 60;
+        this.player_maxVelY = 15;
+        this.player_jumpAccel = 17;
 
         // key bindings
         this.key_left = 37;
