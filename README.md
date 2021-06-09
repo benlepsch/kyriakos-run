@@ -1,4 +1,5 @@
-bean runner game chrome extension time
+Kyriakos Grizzly Run
+the fun kyriakos grizzly running game
 
 installation instgructions:
 
@@ -11,4 +12,4 @@ if you want to get future updates and downloaded the zip file, go chrome://exten
 
 if you want to get future updates and you used `git clone`, do a pull request into the same folder, go to chrome://extensions, and click the refresh button on the extension
 
-happy beaning
+happy cardio
