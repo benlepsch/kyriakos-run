@@ -27,12 +27,12 @@ class Player {
         this.velocityX = 0;
         this.velocityY = 0;
         this.accelX = 0;
-        this.gravity = 1;
-        this.jumpAccel = 60;
+        this.gravity = c.player_gravity;
+        this.jumpAccel = c.player_jumpAccel;
         this.accelY = 0;
 
-        this.maxVelX = 15;
-        this.maxVelY = 8;
+        this.maxVelX = c.player_maxVelX;
+        this.maxVelY = c.player_maxVelY;
     }
 
     startJump() {

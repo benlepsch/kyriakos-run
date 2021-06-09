@@ -3,11 +3,12 @@
  * bean runner or something idk
  */
 
+const c = new Constants();
 
 /* create canvas */
 const canvas = document.createElement('canvas');
-canvas.width = 300;
-canvas.height = 200;
+canvas.width = c.canvas_width;
+canvas.height = c.canvas_height;
 document.body.appendChild(canvas);
 const ctx = canvas.getContext('2d');
 
@@ -72,4 +73,4 @@ function runGame() {
 	}
 }
 
-startGame(60);
+startGame(c.game_fps);

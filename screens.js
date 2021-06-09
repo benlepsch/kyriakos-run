@@ -15,7 +15,7 @@ class Menu {
 
     // big ass bean and some text underneath that says "Click te bean to start game"
     draw() {
-        ctx.fillStyle = 'rgb(148, 90, 53)';
+        ctx.fillStyle = c.menu_color;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(this.icon, 0, 0);
         ctx.font = '30px Calibri';
@@ -26,15 +26,16 @@ class Menu {
 
 // draw background, move clouds, spawn obstacles, what have you
 class Game {
-    constructor(ground_level=150, ground_color='#19e03a', sky_color='#19869c') {
-        this.ground_level = ground_level;
-        this.ground_color = ground_color;
-        this.sky_color = sky_color;
+    constructor() {
+        this.ground_level = c.ground_level;
+        this.ground_color = c.ground_color;
+        this.sky_color = c.sky_color;
+        this.obstaclesEnabled = c.obstaclesEnabled;
         this.obstacles = [];
         this.lastObstacle = 0;
         this.obstacleTimer = 0;
-        this.obstacleUpperTick = 3;
-        this.obstacleLowerTick = 1;
+        this.obstacleUpperTick = c.obstacleRate[1];
+        this.obstacleLowerTick = c.obstacleRate[0];
         this.running = false;
         this.player = null;
     }
@@ -57,7 +58,7 @@ class Game {
         let current = new Date().getTime();
         let dt = Math.round((current - this.lastObstacle)/1000);
 
-        if (dt >= this.obstacleTimer) {
+        if (dt >= this.obstacleTimer && this.obstaclesEnabled) {
             this.lastObstacle = current;
             this.obstacles.push(new Obstacle());
             this.obstacleTimer = Math.round(Math.random() * this.obstacleUpperTick) + this.obstacleLowerTick;
@@ -116,10 +117,10 @@ class Game {
 // walls? lightsabers? what are these
 class Obstacle {
     constructor() {
-        this.color = '#c7c6bf';
-        this.height = Math.random() * 20 + 40;
-        this.width = 18;
-        this.speed = 5;
+        this.color = c.obstacle_color;
+        this.height = Math.random() * (c.obstacle_heights[1] - c.obstacle_heights[0]) + c.obstacle_heights[0];
+        this.width = c.obstacle_width;
+        this.speed = c.obstacle_speed;
         this.left = canvas.width;
         this.remove = false;
     }
