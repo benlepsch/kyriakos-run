@@ -8,9 +8,17 @@ function constrain(val, min, max) {
     return val;
 }
 
+class ImageSrcHolder {
+    constructor() {
+
+    }
+}
+
 class Player {
-    constructor(src='player_sprite', height=20, width=30) {
-        this.rep = document.getElementById(src);
+    constructor(src_running='player_sprite', src_jumping='player_jumping', height=53, width=40) {
+        this.rep = new ImageSrcHolder();
+        this.rep.default = document.getElementById(src_running);
+        this.rep.jumping = document.getElementById(src_running);
         this.left = 0;
         this.top = 0;
         this.height = height;
@@ -35,7 +43,6 @@ class Player {
 
     updateAccel(accelX) {
         this.accelX += accelX;
-        //console.log('accelX: ' + this.accelX);
     }
 
     update() {
@@ -64,6 +71,10 @@ class Player {
 
     // draw onto the canvas
     draw() {
-        ctx.drawImage(this.rep, this.left, this.top);
+        if (this.top + this.height != new Game().ground_level) {
+            ctx.drawImage(this.rep.jumping, this.left, this.top);
+        } else {
+            ctx.drawImage(this.rep.default, this.left, this.top);
+        }
     }
 }
