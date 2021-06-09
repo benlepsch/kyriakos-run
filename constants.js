@@ -36,5 +36,11 @@ class Constants {
         this.player_maxVelX = 15;
         this.player_maxVelY = 8;
         this.player_jumpAccel = 60;
+
+        // key bindings
+        this.key_left = 37;
+        this.key_right = 39;
+        this.key_jump = 38;
+        this.key_start = 38;
     }
 }

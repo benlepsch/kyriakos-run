@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "kyriakos run",
-    "description": "Help Kyriakos Grizzly get a cardio workout! v0.5: jumping animation complete",
-    "version": "0.5.0",
+    "description": "Help Kyriakos Grizzly get a cardio workout! v0.5.1: keys added to constants, jump to start",
+    "version": "0.5.1",
 
     "browser_action": {
         "default_icon": "grizzly_icon.png",

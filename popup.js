@@ -69,6 +69,7 @@ function runGame() {
             }
         } else {
             menu.draw();
+            checkStart();
         }
 	}
 }

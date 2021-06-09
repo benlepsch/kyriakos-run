@@ -15,6 +15,10 @@ window.onkeyup = function(e) {
     let key = e.keyCode ? e.keyCode : e.which;
 
     keys[key] = false;
+
+    if (key == c.key_jump) {
+        game.jump_while_died = false;
+    }
 }
 
 function checkKeys() {
@@ -22,19 +26,26 @@ function checkKeys() {
     let jump = false;
 
     // left arrow
-    if (keys[37]) {
+    if (keys[c.key_left]) {
         accelX -= 5;
     }
 
     // right arrow
-    if (keys[39]) {
+    if (keys[c.key_right]) {
         accelX += 5;
     }
 
     // up arrow
-    if (keys[38]) {
+    if (keys[c.key_jump]) {
         jump = true;
     }
     
     return [accelX, jump];
+}
+
+function checkStart() {
+    if (keys[c.key_start] && !game.jump_while_died) {
+        game.running = true;
+        game.begin();
+    }
 }

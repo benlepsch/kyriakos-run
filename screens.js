@@ -20,7 +20,8 @@ class Menu {
         ctx.drawImage(this.icon, 0, 0);
         ctx.font = '30px Calibri';
         ctx.fillStyle = 'black';
-        ctx.fillText('click theb ean to start', 20, 100);
+        ctx.fillText('click theb ean or press', 20, 100);
+        ctx.fillText('up arrow \nto start', 20, 140);
     }
 }
 
@@ -38,6 +39,7 @@ class Game {
         this.obstacleLowerTick = c.obstacleRate[0];
         this.running = false;
         this.player = null;
+        this.jump_while_died = false;
     }
 
     begin() {
@@ -51,6 +53,9 @@ class Game {
         this.obstacleTimer = 0;
         this.lastObstacle = 0;
         this.obstacles = [];
+        if (keys[c.key_jump]) {
+            this.jump_while_died = true;
+        }
     }
 
     // generate/move obstackles/clouds
