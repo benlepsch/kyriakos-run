@@ -25,6 +25,7 @@ class Constants {
 
         // clouds
         this.cloud_color = '#ffffff';
+        this.cloud_outlines = false;
         this.cloud_height = [40, 80]; // [min, max] height
         this.cloud_width = [50, 100]; // [min, max] width
         this.cloud_top = [0, 40]; // [min, max] y pos

@@ -156,6 +156,7 @@ class Game {
 class Cloud {
     constructor() {
         this.color = c.cloud_color;
+        this.outlines = c.cloud_outlines;
         this.height = Math.random() * (c.cloud_height[1] - c.cloud_height[0]) + c.cloud_height[0];
         this.width = Math.random() * (c.cloud_width[1] - c.cloud_width[0]) + c.cloud_width[0];
         this.top = Math.random() * (c.cloud_top[1] - c.cloud_top[0]) + c.cloud_top[0];
@@ -174,10 +175,13 @@ class Cloud {
     draw() {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.left, this.top, this.width, this.height);
-        ctx.strokeStyle = 'black';
-        ctx.beginPath();
-        ctx.rect(this.left, this.top, this.width, this.height);
-        ctx.stroke();
+
+        if (this.outlines) {
+            ctx.strokeStyle = 'black';
+            ctx.beginPath();
+            ctx.rect(this.left, this.top, this.width, this.height);
+            ctx.stroke();
+        }
     }
 }
 
