@@ -5,7 +5,7 @@
     "version": "0.5.1",
 
     "browser_action": {
-        "default_icon": "grizzly_icon.png",
+        "default_icon": "images/grizzly_icon.png",
         "default_popup": "popup.html"
     }
 }
