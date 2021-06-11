@@ -4,6 +4,7 @@ class Menu {
         this.icon = document.getElementById('bean');
         this.iconHeight = 69;
         this.iconWidth = 122;
+        this.highscore = 0;
     }
 
     // if the mouse is on the bean button
@@ -22,6 +23,8 @@ class Menu {
         ctx.fillStyle = 'black';
         ctx.fillText('click theb ean or press', 20, 100);
         ctx.fillText('up arrow \nto start', 20, 140);
+        ctx.font = '20px Calibri';
+        ctx.fillText('highscore: ' + this.highscore, 30, 180);
     }
 }
 
@@ -52,6 +55,7 @@ class Game {
         this.running = false;
         this.player = null;
         this.jump_while_died = false;
+        this.score = 0;
     }
 
     begin() {
@@ -64,6 +68,10 @@ class Game {
         this.running = false;
         this.obstacleTimer = 0;
         this.lastObstacle = 0;
+        if (this.score > menu.highscore) {
+            menu.highscore = this.score;
+        }
+        this.score = 0;
         this.obstacles = [];
         this.clouds = [];
         if (keys[c.key_jump]) {
@@ -73,6 +81,8 @@ class Game {
 
     // generate/move obstackles/clouds
     update() {
+        this.score += 1;
+
         let current = new Date().getTime();
         let obstacles_dt = Math.round((current - this.lastObstacle)/1000);
         let clouds_dt = Math.round((current - this.lastCloud)/1000);
@@ -150,6 +160,10 @@ class Game {
         for (let i = 0; i < this.obstacles.length; i++) {
             this.obstacles[i].draw();
         }
+
+        ctx.font = '30px Calibri';
+        ctx.fillStyle = 'yellow';
+        ctx.fillText(this.score, canvas.width - 100, 20);
     }
 }
 
@@ -190,7 +204,7 @@ class Obstacle {
     constructor() {
         this.color = c.obstacle_color;
         this.height = Math.random() * (c.obstacle_heights[1] - c.obstacle_heights[0]) + c.obstacle_heights[0];
-        this.width = c.obstacle_width;
+        this.width = Math.random() * (c.obstacle_width[1] - c.obstacle_width[0]) + c.obstacle_width[0];
         this.speed = c.obstacle_speed;
         this.left = canvas.width;
         this.remove = false;

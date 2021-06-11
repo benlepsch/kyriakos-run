@@ -49,9 +49,9 @@ class Player {
         this.velocityX = constrain(this.velocityX + this.accelX, -1*this.maxVelX, this.maxVelX);
 		
         if (keys[c.key_jump]) {
-            this.velocityY = constrain(this.velocityY + this.accelY + (2*this.gravity/3), -1*this.maxVelY, this.maxVelY);
+            this.velocityY = constrain(this.velocityY + this.accelY + (0.7*this.gravity), -1*this.maxVelY, this.maxVelY);
         } else {
-            this.velocityY = constrain(this.velocityY + this.gravity + this.accelY, -1*this.maxVelY, this.maxVelY);
+            this.velocityY = constrain(this.velocityY + this.accelY + (1.4*this.gravity), -1*this.maxVelY, this.maxVelY);
         }
 
 		this.velocityX = this.velocityX < 0 ? Math.ceil(this.velocityX/2) : Math.floor(this.velocityX/2);

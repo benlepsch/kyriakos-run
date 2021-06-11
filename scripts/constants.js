@@ -30,13 +30,13 @@ class Constants {
         this.cloud_width = [50, 100]; // [min, max] width
         this.cloud_top = [0, 40]; // [min, max] y pos
         this.cloud_speed = [2, 6]; // [min, max] speed
-        this.cloud_rate = [1, 2];
+        this.cloud_rate = [1, 2]; // you get it by now
 
         // obstacles
         this.obstaclesEnabled = true;
         this.obstacleRate = [1,3]; // [min, max] seconds b4 obstacle spawns
         this.obstacle_color = '#c7c6bf';
-        this.obstacle_width = 18;
+        this.obstacle_width = [18, 25];
         this.obstacle_speed = 5;
         this.obstacle_heights = [40, 60]; //[min, max] height
 
