@@ -1,9 +1,10 @@
 Kyriakos Grizzly Run
+
 the fun kyriakos grizzly running game
 
 installation instgructions:
 
-1. download whole repo either as a zip thru the website or with `git clone https://github.com/benlepsch/extension2.git` (if you downloaded zip file, extract it)
+1. download whole repo either as a zip thru the "downlaod" button above, or with the git bash/linux command `git clone https://github.com/benlepsch/kyriakos-run.git` (if you downloaded zip file, extract it)
 2. open new chrome tab, go chrome://extensions
 3. click "load unpacked" on the top left and select the extension2 folder
 4. boom it is on chrome
