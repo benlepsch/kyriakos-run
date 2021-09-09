@@ -33,6 +33,10 @@ canvas.onmousedown = () => {
     }
 }
 
+chrome.storage.local.get(["highscore"], function(items) {
+    menu.highscore = items.highscore;
+});
+
 
 /* main loop */
 let fpsInterval, then, startTime, elapsed;

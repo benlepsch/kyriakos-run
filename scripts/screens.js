@@ -70,6 +70,11 @@ class Game {
         if (this.score > menu.highscore) {
             menu.highscore = this.score;
         }
+
+        chrome.storage.local.set({"highscore": this.score}, function() {
+            console.log('saving highscore');
+        });
+
         this.score = 0;
         this.obstacles = [];
         this.clouds = [];

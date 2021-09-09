@@ -4,6 +4,10 @@
     "description": "Help Kyriakos Grizzly get a cardio workout! v0.5.1: keys added to constants, jump to start",
     "version": "0.5.1",
 
+    "permissions": [
+        "storage"
+    ],
+
     "browser_action": {
         "default_icon": "images/grizzly_icon.png",
         "default_popup": "popup.html"
