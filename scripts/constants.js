@@ -33,12 +33,15 @@ class Constants {
         this.cloud_rate = [1, 2]; // you get it by now
 
         // obstacles
-        this.obstaclesEnabled = true;
-        this.obstacleRate = [1,3]; // [min, max] seconds b4 obstacle spawns
+        this.obstacles_enabled = true;
+        this.obstacle_rate = [1*50,3*100]; // [min, max] seconds b4 obstacle spawns
         this.obstacle_color = '#c7c6bf';
         this.obstacle_width = [18, 25];
         this.obstacle_speed = 5;
         this.obstacle_heights = [40, 60]; //[min, max] height
+        this.obstacle_speed_growth = (score) => {
+            return Math.log10(score);
+        }
 
         // player movement
         this.player_gravity = 1;

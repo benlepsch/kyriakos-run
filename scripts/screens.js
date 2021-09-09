@@ -1,4 +1,3 @@
-
 class Menu {
     constructor() {
         this.icon = document.getElementById('bean');
@@ -44,12 +43,12 @@ class Game {
         this.cloudLowerTick = c.cloud_rate[0];
 
         // obstacles
-        this.obstaclesEnabled = c.obstaclesEnabled;
+        this.obstaclesEnabled = c.obstacles_enabled;
         this.obstacles = [];
         this.lastObstacle = 0;
         this.obstacleTimer = 0;
-        this.obstacleUpperTick = c.obstacleRate[1];
-        this.obstacleLowerTick = c.obstacleRate[0];
+        this.obstacleUpperTick = c.obstacle_rate[1];
+        this.obstacleLowerTick = c.obstacle_rate[0];
 
         // main loop/player
         this.running = false;
@@ -84,14 +83,15 @@ class Game {
         this.score += 1;
 
         let current = new Date().getTime();
-        let obstacles_dt = Math.round((current - this.lastObstacle)/1000);
+        this.obstacleTimer -= 1000/200;
         let clouds_dt = Math.round((current - this.lastCloud)/1000);
         
         // obstacles
-        if (obstacles_dt >= this.obstacleTimer && this.obstaclesEnabled) {
+        if (this.obstacleTimer <= 0 && this.obstaclesEnabled) {
             this.lastObstacle = current;
             this.obstacles.push(new Obstacle());
-            this.obstacleTimer = Math.round(Math.random() * this.obstacleUpperTick) + this.obstacleLowerTick;
+            let l = Math.random();
+            this.obstacleTimer = (l * this.obstacleUpperTick) + (l * this.obstacleUpperTick/2) + this.obstacleLowerTick;
         }
 
         for (let i = 0; i < this.obstacles.length; i++) {
@@ -205,7 +205,7 @@ class Obstacle {
         this.color = c.obstacle_color;
         this.height = Math.random() * (c.obstacle_heights[1] - c.obstacle_heights[0]) + c.obstacle_heights[0];
         this.width = Math.random() * (c.obstacle_width[1] - c.obstacle_width[0]) + c.obstacle_width[0];
-        this.speed = c.obstacle_speed;
+        this.speed = c.obstacle_speed + c.obstacle_speed_growth(game.score);
         this.left = canvas.width;
         this.remove = false;
     }
