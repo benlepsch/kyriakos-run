@@ -24,6 +24,7 @@ class Menu {
         ctx.fillText('up arrow \nto start', 20, 140);
         ctx.font = '20px Calibri';
         ctx.fillText('highscore: ' + this.highscore, 30, 180);
+        ctx.fillText('last score: ' + game.lastscore, 30, 210);
     }
 }
 
@@ -55,6 +56,7 @@ class Game {
         this.player = null;
         this.jump_while_died = false;
         this.score = 0;
+        this.lastscore = 0;
     }
 
     begin() {
@@ -67,6 +69,7 @@ class Game {
         this.running = false;
         this.obstacleTimer = 0;
         this.lastObstacle = 0;
+        this.lastscore = this.score;
         if (this.score > menu.highscore) {
             menu.highscore = this.score;
         }
