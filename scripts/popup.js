@@ -58,7 +58,7 @@ function runGame() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         // draw
-        if (game.running) {
+        if (game.running && !game.pause) {
             let inp = checkKeys();
             game.player.updateAccel(inp[0]);
             if (inp[1]) {
@@ -71,9 +71,12 @@ function runGame() {
             if (game.running) {
                 game.player.draw();
             }
-        } else {
+        } else if (!game.pause) {
             menu.draw();
             checkStart();
+        } else {
+            game.draw();
+            game.player.draw();
         }
 	}
 }

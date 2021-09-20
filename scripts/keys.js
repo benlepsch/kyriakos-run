@@ -19,6 +19,13 @@ window.onkeyup = function(e) {
     if (key == c.key_jump) {
         game.jump_while_died = false;
     }
+
+    // pause
+    if (key == c.key_pause) {
+        game.pause = !game.pause;
+        console.log('game being paused');
+    }
+    
 }
 
 function checkKeys() {

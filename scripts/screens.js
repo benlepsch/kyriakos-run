@@ -57,6 +57,7 @@ class Game {
         this.jump_while_died = false;
         this.score = 0;
         this.lastscore = 0;
+        this.pause = false;
     }
 
     begin() {

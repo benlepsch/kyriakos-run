@@ -15,6 +15,9 @@ class Constants {
 
         // menu screen
         this.menu_color = 'rgb(148, 90, 53)';
+
+        // pausing allowed
+        this.pausing_allowed = true;
         
         // background map
         this.canvas_width = 500;
@@ -54,5 +57,6 @@ class Constants {
         this.key_right = 39;
         this.key_jump = 38;
         this.key_start = 38;
+        this.key_pause = 40;
     }
 }
