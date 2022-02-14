@@ -242,8 +242,8 @@ class Obstacle {
 
     // draw
     draw() {
-        //ctx.fillStyle = this.color;
-        //ctx.fillRect(this.left, new Game().ground_level - this.height, this.width, this.height);
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.left, new Game().ground_level - this.height, this.width, this.height);
         ctx.drawImage(this.rep.default, this.left, this.top);
         console.log('drawing rep at ' + this.left + ',' + this.height);
     }
