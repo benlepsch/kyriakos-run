@@ -212,11 +212,14 @@ class Cloud {
 class Obstacle {
     constructor() {
         this.color = c.obstacle_color;
-        this.height = Math.random() * (c.obstacle_heights[1] - c.obstacle_heights[0]) + c.obstacle_heights[0];
-        this.width = Math.random() * (c.obstacle_width[1] - c.obstacle_width[0]) + c.obstacle_width[0];
+        this.height = 50;
+        this.width = 50;
         this.speed = c.obstacle_speed + c.obstacle_speed_growth(game.score);
         this.left = canvas.width;
         this.remove = false;
+
+        this.rep = new ImageSrcHolder();
+        this.rep.default = document.getElementById('ground_obstacle');
     }
 
     // for collision checking with player
@@ -239,7 +242,8 @@ class Obstacle {
 
     // draw
     draw() {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.left, new Game().ground_level - this.height, this.width, this.height);
+        //ctx.fillStyle = this.color;
+        //ctx.fillRect(this.left, new Game().ground_level - this.height, this.width, this.height);
+        ctx.drawImage(this.rep.default, this.left, this.top);
     }
 }
