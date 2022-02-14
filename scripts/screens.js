@@ -212,8 +212,8 @@ class Cloud {
 class Obstacle {
     constructor() {
         this.color = c.obstacle_color;
-        this.height = 50;
-        this.width = 50;
+        this.height = 80;
+        this.width = 92;
         this.speed = c.obstacle_speed + c.obstacle_speed_growth(game.score);
         this.left = canvas.width;
         this.remove = false;
@@ -245,5 +245,6 @@ class Obstacle {
         //ctx.fillStyle = this.color;
         //ctx.fillRect(this.left, new Game().ground_level - this.height, this.width, this.height);
         ctx.drawImage(this.rep.default, this.left, this.top);
+        console.log('drawing rep at ' + this.left + ',' + this.height);
     }
 }
