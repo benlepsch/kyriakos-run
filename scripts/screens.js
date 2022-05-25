@@ -89,7 +89,7 @@ class Game {
 
     // generate/move obstackles/clouds
     update() {
-        this.score += 1;
+        this.score += 1*c.score_const;
 
         let current = new Date().getTime();
         this.obstacleTimer -= 1000/200;
@@ -214,6 +214,10 @@ class Obstacle {
         this.color = c.obstacle_color;
         this.height = Math.random() * (c.obstacle_heights[1] - c.obstacle_heights[0]) + c.obstacle_heights[0];
         this.width = Math.random() * (c.obstacle_width[1] - c.obstacle_width[0]) + c.obstacle_width[0];
+        if (game.score >= 5000) {
+            this.height = c.ground_level;
+            this.width = c.canvas_width;
+        }
         this.speed = c.obstacle_speed + c.obstacle_speed_growth(game.score);
         this.left = canvas.width;
         this.remove = false;

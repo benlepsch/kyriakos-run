@@ -17,7 +17,11 @@ class Constants {
         this.menu_color = 'rgb(148, 90, 53)';
 
         // pausing allowed
-        this.pausing_allowed = true;
+        this.pausing_allowed = false;
+
+        // for testing shit at high scores
+        // 1 is normal
+        this.score_const = 1;
         
         // background map
         this.canvas_width = 500;
@@ -29,9 +33,9 @@ class Constants {
         // clouds
         this.cloud_color = '#ffffff';
         this.cloud_outlines = false;
-        this.cloud_height = [40, 80]; // [min, max] height
+        this.cloud_height = [20, 50]; // [min, max] height
         this.cloud_width = [50, 100]; // [min, max] width
-        this.cloud_top = [0, 40]; // [min, max] y pos
+        this.cloud_top = [0, 30]; // [min, max] y pos
         this.cloud_speed = [2, 6]; // [min, max] speed
         this.cloud_rate = [1, 2]; // you get it by now
 
@@ -41,9 +45,9 @@ class Constants {
         this.obstacle_color = '#c7c6bf';
         this.obstacle_width = [18, 25];
         this.obstacle_speed = 5;
-        this.obstacle_heights = [40, 60]; //[min, max] height
+        this.obstacle_heights = [50, 110]; //[min, max] height
         this.obstacle_speed_growth = (score) => {
-            return Math.log10(score);
+            return (score < 2400) ? (score / 400) : 6;
         }
 
         // player movement
