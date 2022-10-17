@@ -16,7 +16,7 @@ class Constants {
         // menu screen
         this.menu_color = 'rgb(148, 90, 53)';
 
-        // pausing allowed
+        // self explanatory
         this.pausing_allowed = false;
 
         // for testing shit at high scores
