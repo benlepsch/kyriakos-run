@@ -20,7 +20,7 @@ class Menu {
         ctx.drawImage(this.icon, 0, 0);
         ctx.font = '30px Calibri';
         ctx.fillStyle = 'black';
-        ctx.fillText('click theb ean or press', 20, 100);
+        ctx.fillText('click the bean or press', 20, 100);
         ctx.fillText('up arrow \nto start', 20, 140);
         ctx.font = '20px Calibri';
         ctx.fillText('highscore: ' + this.highscore, 30, 180);
@@ -73,11 +73,11 @@ class Game {
         this.lastscore = this.score;
         if (this.score > menu.highscore) {
             menu.highscore = this.score;
-        }
 
-        chrome.storage.local.set({"highscore": this.score}, function() {
-            console.log('saving highscore');
-        });
+            chrome.storage.local.set({"highscore": this.score}, function() {
+                console.log('saving highscore');
+            });
+        }
 
         this.score = 0;
         this.obstacles = [];

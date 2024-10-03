@@ -34,7 +34,7 @@ canvas.onmousedown = () => {
 }
 
 chrome.storage.local.get(["highscore"], function(items) {
-    menu.highscore = items.highscore;
+    menu.highscore = (items.highscore == undefined) ? 0 : items.highscore;
 });
 
 
