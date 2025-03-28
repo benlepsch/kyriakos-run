@@ -21,7 +21,7 @@ window.onkeyup = function(e) {
     }
 
     // pause
-    if (key == c.key_pause) {
+    if (key == c.key_pause && game.running) {
         game.pause = !game.pause;
         console.log('game being paused');
     }
