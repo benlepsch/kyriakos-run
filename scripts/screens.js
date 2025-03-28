@@ -50,6 +50,7 @@ class Game {
         this.obstacleTimer = 0;
         this.obstacleUpperTick = c.obstacle_rate[1];
         this.obstacleLowerTick = c.obstacle_rate[0];
+        this.obstacleLastClose = false;
 
         // main loop/player
         this.running = false;
@@ -100,7 +101,15 @@ class Game {
             this.lastObstacle = current;
             this.obstacles.push(new Obstacle());
             let l = Math.random();
-            this.obstacleTimer = (l * this.obstacleUpperTick) + (l * this.obstacleUpperTick/2) + this.obstacleLowerTick;
+            if (!this.obstacleLastClose && l < 0.3) {
+                this.obstacleTimer = c.obstacle_close_dist;
+                this.obstacleLastClose = true;
+            } else if (this.obstacleLastClose && l < 0.05) {
+                this.obstacleTimer = c.obstacle_close_dist;
+            } else {
+                this.obstacleTimer = (l * this.obstacleUpperTick) + (l * this.obstacleUpperTick/2) + this.obstacleLowerTick;
+                this.obstacleLastClose = false;
+            }
         }
 
         for (let i = 0; i < this.obstacles.length; i++) {

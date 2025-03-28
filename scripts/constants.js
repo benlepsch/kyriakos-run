@@ -41,13 +41,14 @@ class Constants {
 
         // obstacles
         this.obstacles_enabled = true;
-        this.obstacle_rate = [1*50,3*100]; // [min, max] seconds b4 obstacle spawns
+        this.obstacle_rate = [180,300]; // [min, max] seconds b4 obstacle spawns
+        this.obstacle_close_dist = 40;
         this.obstacle_color = '#c7c6bf';
         this.obstacle_width = [18, 25];
         this.obstacle_speed = 5;
         this.obstacle_heights = [50, 110]; //[min, max] height
         this.obstacle_speed_growth = (score) => {
-            return (score < 2400) ? (score / 400) : 6;
+            return (score < 2400) ? (score / 500) : 5;
         }
 
         // player movement
@@ -56,7 +57,7 @@ class Constants {
         this.player_maxVelY = 15;
         this.player_jumpAccel = 17;
 
-        // key bindings
+        // key bindings (arrow keys)
         this.key_left = 37;
         this.key_right = 39;
         this.key_jump = 38;
