@@ -1,6 +1,7 @@
 class Menu {
     constructor() {
         this.icon = document.getElementById('bean');
+        this.grizz = document.getElementById('grizzly');
         this.iconHeight = 69;
         this.iconWidth = 122;
         this.highscore = 0;
@@ -18,6 +19,8 @@ class Menu {
         ctx.fillStyle = c.menu_color;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(this.icon, 0, 0);
+        // grizzly image is 435 x 369
+        ctx.drawImage(this.grizz, 220, 0, (canvas.width - 220), canvas.height);
         ctx.font = '30px Calibri';
         ctx.fillStyle = 'black';
         ctx.fillText('click the bean or press', 20, 100);
