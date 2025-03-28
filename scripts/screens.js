@@ -101,10 +101,10 @@ class Game {
             this.lastObstacle = current;
             this.obstacles.push(new Obstacle());
             let l = Math.random();
-            if (!this.obstacleLastClose && l < 0.3) {
+            if (!this.obstacleLastClose && l < c.obstacle_close_chance) {
                 this.obstacleTimer = c.obstacle_close_dist;
                 this.obstacleLastClose = true;
-            } else if (this.obstacleLastClose && l < 0.05) {
+            } else if (this.obstacleLastClose && l < c.obstacle_second_close_chance) {
                 this.obstacleTimer = c.obstacle_close_dist;
             } else {
                 this.obstacleTimer = (l * this.obstacleUpperTick) + (l * this.obstacleUpperTick/2) + this.obstacleLowerTick;

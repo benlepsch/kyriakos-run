@@ -43,6 +43,8 @@ class Constants {
         this.obstacles_enabled = true;
         this.obstacle_rate = [180,300]; // [min, max] seconds b4 obstacle spawns
         this.obstacle_close_dist = 40;
+        this.obstacle_close_chance = 0.33;
+        this.obstacle_second_close_chance = 0.08;
         this.obstacle_color = '#c7c6bf';
         this.obstacle_width = [18, 25];
         this.obstacle_speed = 5;
