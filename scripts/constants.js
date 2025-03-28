@@ -50,7 +50,7 @@ class Constants {
         this.obstacle_speed = 5;
         this.obstacle_heights = [50, 110]; //[min, max] height
         this.obstacle_speed_growth = (score) => {
-            return (score < 2400) ? (score / 500) : 5;
+            return (score < 2500) ? (score / 500) : 5;
         }
 
         // player movement
